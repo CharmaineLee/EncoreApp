@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src  'self' 'unsafe-inline' *">
+
+    <title>Bravo</title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="js/ng-cordova.min.js"></script>
+    <script src="cordova.js"></script>
+    <script src="js/filters.js"></script>
+    <script src="js/app.js"></script>
+</head>
+
+<body ng-app="T2TApp">
+
+  <ion-nav-view></ion-nav-view>
+
+  <script id="templates/main.html" type="text/ng-template">
+    <ion-header-bar class="bar-balanced">
+      <h1 class="title">Bravo</h1>
+    </ion-header-bar>
+    <ion-content class="padding">
+      <h3 class="title center">
+        Select tip amount.
+      </h3>
+      <div class="padding">
+      <ion-list class="padding">
+        <ion-radio ng-click="selectChoice()" ng-model="choice" ng-value="1">$1.00</ion-radio>
+        <ion-radio ng-click="selectChoice()" ng-model="choice" ng-value="2.50">$2.50</ion-radio>
+        <ion-radio ng-click="selectChoice()" ng-model="choice" ng-value="5">$5.00</ion-radio>
+        <ion-radio ng-click="selectChoice()" ng-model="choice" ng-value="10">$10.00</ion-radio>
+      </ion-list>
+	   </div>
+    </ion-content>
+  </script>
+
+  <script id="templates/artistprofile.html" type="text/ng-template">
+    <ion-header-bar class="bar-balanced">
+      <h1 class="title">Artist Name</h1>
+    </ion-header-bar>
+    <ion-content class="padding">
+      <div class="list card">
+        <div class="item item-avatar">
+          <img src="{{artist.pictureUrl}}">
+          <h2>{{artist.name}}</h2>
+          <p>{{artist.title}}</p>
+        </div>
+        <div class="item item-body">
+          <p>
+            {{artist.description}}
+          </p>
+          <p>
+            <a class="subdued"><i class="icon ion-star"></i> {{artist.rating}} stars </a>
+            <a class="subdued">{{artist.followers}} followers</a>
+          </p>
+        </div>
+      </div>
+
+      <button ng-click="confirmationAlert()" class="button button-full button-positive icon ion-card">
+        Confirm Tipping</button>
+    </ion-content>
+  </script>
+
+  <script id="templates/confirmation.html" type="text/ng-template">
+    <ion-header-bar class="bar-balanced">
+      <h1 class="title">Tip Confirmation</h1>
+    </ion-header-bar>
+    <ion-content class="padding">
+      <h2>Thank you!</h2>
+      <h4>An e-receipt will be sent to your email.</h4>
+      <div class="card">
+        <div class="item item-divider">
+          Would you like to leave a review?
+        </div>
+        <div class="item item-text-wrap">
+          <div class="star-rating" star-rating rating="starRating" click="click(param)" mouse-hover="mouseHover(param)" mouse-leave="mouseLeave(param)">
+          </div>
+          <div class="item item-input-inset">
+              <label class="item-input-wrapper">
+                <input type="text" placeholder="Comments">
+
+              </label>
+          </div>
+          <button ng-click="popupAlert()" class="button button-full button-positive icon ion-checkmark-circled">
+             Submit Feedback</button>
+        </div>
+      </div>
+    </ion-content>
+  </script>
+
+</body>
+
+</html>

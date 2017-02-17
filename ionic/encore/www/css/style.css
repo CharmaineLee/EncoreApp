@@ -1,0 +1,29 @@
+body p {
+  font-size: 1.05em !important;
+}
+dt {
+    float: left;
+    font-weight: normal;
+    margin-right: 0.25em;
+}
+
+dt:after
+{
+    content:": ";
+}
+
+dd {
+    font-weight: bold;
+}
+
+.center {
+    text-align: center;
+}
+
+#map {
+    height: 100%;
+    width: 100%;
+}
+.scroll {
+    height: 100%;
+}
